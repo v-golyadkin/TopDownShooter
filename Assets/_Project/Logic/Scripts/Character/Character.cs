@@ -27,9 +27,7 @@ public class Character : MonoBehaviour, IControllable
 
     private void MoveInternal()
     {
-        var targetVelocity = _moveDirection * _characterSpeed;
-
-        _velocity = Vector2.Lerp(_velocity, targetVelocity, _characterSpeed * Time.fixedDeltaTime);
+        _velocity = _moveDirection * _characterSpeed;
 
         _rb.velocity = _velocity;
     }
