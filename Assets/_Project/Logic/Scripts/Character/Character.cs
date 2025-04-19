@@ -15,8 +15,14 @@ public class Character : MonoBehaviour, IControllable
         _rb = GetComponent<Rigidbody2D>();
     }
 
+    private void Update()
+    {
+        
+    }
+
     private void FixedUpdate()
     {
+        AdjustPlayerFacingDirection();
         MoveInternal();
     }
 
@@ -30,5 +36,19 @@ public class Character : MonoBehaviour, IControllable
         _velocity = _moveDirection * _characterSpeed;
 
         _rb.velocity = _velocity;
+    }
+
+    private void AdjustPlayerFacingDirection()
+    {
+        var mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        if(mousePosition.x < transform.position.x)
+        {
+            transform.rotation = Quaternion.Euler(0, -180, 0);
+        }
+        else
+        {
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+        }
     }
 }
