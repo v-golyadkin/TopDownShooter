@@ -709,6 +709,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _arrowPrefab: {fileID: 3008330082499690121, guid: c4c739f616e39d1449459afeb3eeb26c, type: 3}
   _arrowSpawnPoint: {fileID: 257445177}
+  _attackSpeed: 0.3
 --- !u!1 &1710432409
 GameObject:
   m_ObjectHideFlags: 0
