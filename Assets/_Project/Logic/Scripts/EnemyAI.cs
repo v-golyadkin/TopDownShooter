@@ -1,10 +1,12 @@
 using UnityEngine;
 
-public class EnemyAI : MonoBehaviour
+public class EnemyAI : MonoBehaviour, IDamageable
 {
     [SerializeField] private float _movespeed = 2f;
     [SerializeField] private float _roamingRadius = 5f;
     [SerializeField] private float _chaseRadius = 10f;
+
+    [SerializeField] private int _health = 3;
 
     private Transform _player;
     private Vector2 _roamingPosition;
@@ -50,5 +52,20 @@ public class EnemyAI : MonoBehaviour
         {
             _roamingPosition = GetRoamingPosition();
         }
+    }
+
+    public void TakeDamage()
+    {
+        _health--;
+        Debug.Log(_health);
+        if(_health <= 0)
+        {
+            Death();
+        }
+    }
+
+    private void Death()
+    {
+        Destroy(gameObject);
     }
 }
