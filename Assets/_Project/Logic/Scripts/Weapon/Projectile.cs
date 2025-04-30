@@ -1,9 +1,10 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
     [SerializeField] private float _projectileSpeed;
-
+    
     private void Update()
     {
         Move();
@@ -16,18 +17,14 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //if (collision.gameObject.CompareTag("Player"))
-        //{
-        //    return;
-        //}
-        //else
-        //{
-        //    Destroy(gameObject);
-        //}
-
-        if(collision.TryGetComponent<IDamageable>(out IDamageable damageable))
+        if (collision.gameObject.CompareTag("Player"))
         {
-            damageable.TakeDamage();
+          return;
+        }
+
+        if (collision.TryGetComponent<IDamageable>(out IDamageable damageable))
+        {
+            damageable.TakeDamage(1);
         }
 
         Destroy(gameObject);

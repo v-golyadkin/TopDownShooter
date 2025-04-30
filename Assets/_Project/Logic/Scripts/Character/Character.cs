@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -6,7 +7,7 @@ public class Character : MonoBehaviour, IControllable, IDamageable
 {
     [SerializeField] private float _characterSpeed;
 
-    [SerializeField] private int _health = 3;
+    [field: SerializeField] public int MaxHealth { get; set; } = 3;
 
     private Rigidbody2D _rb;
     
@@ -15,15 +16,20 @@ public class Character : MonoBehaviour, IControllable, IDamageable
 
     private bool _canTakeDamage = true;
 
+    public event Action OnDeath;
+
+    public int CurrentHealth { get; set; }
+
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
     }
 
-    private void Update()
+    private void Start()
     {
-        
+        CurrentHealth = MaxHealth;
     }
+
 
     private void FixedUpdate()
     {
@@ -40,7 +46,7 @@ public class Character : MonoBehaviour, IControllable, IDamageable
     {
         _velocity = _moveDirection * _characterSpeed;
 
-        _rb.velocity = _velocity;
+        _rb.linearVelocity = _velocity;
     }
 
     private void AdjustPlayerFacingDirection()
@@ -61,29 +67,40 @@ public class Character : MonoBehaviour, IControllable, IDamageable
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            TakeDamage();
+            TakeDamage(1);
         }
     }
 
-    public void TakeDamage()
-    {
-        if (!_canTakeDamage) { return; }
-
-        _canTakeDamage = false;
-
-        _health--;
-
-        if(_health <= 0)
-        {
-            Debug.Log("Death");
-        }
-
-        DamageRecoveryRoutine();
-    }
 
     private IEnumerator DamageRecoveryRoutine()
     {
         yield return new WaitForSeconds(2f);
         _canTakeDamage = true;
+    }
+
+    public void TakeDamage(int damageAmount)
+    {
+        if (!_canTakeDamage) { return; }
+
+        _canTakeDamage = false;
+
+        CurrentHealth -= damageAmount;
+
+        Debug.Log(CurrentHealth);
+
+        if(CurrentHealth <= 0)
+        {
+            Die();
+        }
+
+        StartCoroutine(DamageRecoveryRoutine());
+    }
+
+    public void Die()
+    {
+        Debug.Log("Player died");
+
+        OnDeath?.Invoke();
+        //todo
     }
 }
