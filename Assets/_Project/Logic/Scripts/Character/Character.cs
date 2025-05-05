@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class Character : MonoBehaviour, IControllable, IDamageable
+public class Character : MonoBehaviour, IDamageable, IControllable
 {
     [SerializeField] private float _characterSpeed;
 
@@ -19,10 +19,14 @@ public class Character : MonoBehaviour, IControllable, IDamageable
     public event Action OnDeath;
 
     public int CurrentHealth { get; set; }
+    public Rigidbody2D Rigidbody { get ; set; }
+    public bool IsFacingRight { get; set; }
 
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
+
+        Rigidbody = GetComponent<Rigidbody2D>();
     }
 
     private void Start()
@@ -102,5 +106,16 @@ public class Character : MonoBehaviour, IControllable, IDamageable
 
         OnDeath?.Invoke();
         //todo
+    }
+
+    public void MoveTo(Vector2 velocity)
+    {
+        throw new NotImplementedException();
+    }
+
+
+    public void AdjustFacingDirection(Vector2 velocity)
+    {
+        throw new NotImplementedException();
     }
 }
