@@ -4419,9 +4419,50 @@ MonoBehaviour:
   - waveName: 1
     enemies:
     - prefab: {fileID: 3246630035003271564, guid: be0c5aedd05f90e40a20e47bbb6ff3d5, type: 3}
-      spawnPoint: {fileID: 0}
+      spawnPoint: {fileID: 2029328024}
     - prefab: {fileID: 3246630035003271564, guid: be0c5aedd05f90e40a20e47bbb6ff3d5, type: 3}
-      spawnPoint: {fileID: 0}
+      spawnPoint: {fileID: 1204193447}
+  - waveName: 2
+    enemies:
+    - prefab: {fileID: 3246630035003271564, guid: be0c5aedd05f90e40a20e47bbb6ff3d5, type: 3}
+      spawnPoint: {fileID: 910550303}
+    - prefab: {fileID: 3246630035003271564, guid: be0c5aedd05f90e40a20e47bbb6ff3d5, type: 3}
+      spawnPoint: {fileID: 46273459662455184}
+  - waveName: 3
+    enemies:
+    - prefab: {fileID: 3246630035003271564, guid: be0c5aedd05f90e40a20e47bbb6ff3d5, type: 3}
+      spawnPoint: {fileID: 910550303}
+    - prefab: {fileID: 3246630035003271564, guid: be0c5aedd05f90e40a20e47bbb6ff3d5, type: 3}
+      spawnPoint: {fileID: 1692631068}
+    - prefab: {fileID: 3246630035003271564, guid: be0c5aedd05f90e40a20e47bbb6ff3d5, type: 3}
+      spawnPoint: {fileID: 391610216}
+    - prefab: {fileID: 3246630035003271564, guid: be0c5aedd05f90e40a20e47bbb6ff3d5, type: 3}
+      spawnPoint: {fileID: 46273459662455184}
+  - waveName: 4
+    enemies:
+    - prefab: {fileID: 3246630035003271564, guid: be0c5aedd05f90e40a20e47bbb6ff3d5, type: 3}
+      spawnPoint: {fileID: 910550303}
+    - prefab: {fileID: 3246630035003271564, guid: be0c5aedd05f90e40a20e47bbb6ff3d5, type: 3}
+      spawnPoint: {fileID: 1692631068}
+    - prefab: {fileID: 3246630035003271564, guid: be0c5aedd05f90e40a20e47bbb6ff3d5, type: 3}
+      spawnPoint: {fileID: 391610216}
+    - prefab: {fileID: 3246630035003271564, guid: be0c5aedd05f90e40a20e47bbb6ff3d5, type: 3}
+      spawnPoint: {fileID: 46273459662455184}
+  - waveName: 5
+    enemies:
+    - prefab: {fileID: 3246630035003271564, guid: be0c5aedd05f90e40a20e47bbb6ff3d5, type: 3}
+      spawnPoint: {fileID: 910550303}
+    - prefab: {fileID: 3246630035003271564, guid: be0c5aedd05f90e40a20e47bbb6ff3d5, type: 3}
+      spawnPoint: {fileID: 1692631068}
+    - prefab: {fileID: 3246630035003271564, guid: be0c5aedd05f90e40a20e47bbb6ff3d5, type: 3}
+      spawnPoint: {fileID: 391610216}
+    - prefab: {fileID: 3246630035003271564, guid: be0c5aedd05f90e40a20e47bbb6ff3d5, type: 3}
+      spawnPoint: {fileID: 46273459662455184}
+    - prefab: {fileID: 3246630035003271564, guid: be0c5aedd05f90e40a20e47bbb6ff3d5, type: 3}
+      spawnPoint: {fileID: 2029328024}
+    - prefab: {fileID: 3246630035003271564, guid: be0c5aedd05f90e40a20e47bbb6ff3d5, type: 3}
+      spawnPoint: {fileID: 1204193447}
+  _delayBetweenWaves: 1
 --- !u!1001 &910550302
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5671,6 +5712,51 @@ MonoBehaviour:
   _arrowPrefab: {fileID: 3008330082499690121, guid: c4c739f616e39d1449459afeb3eeb26c, type: 3}
   _arrowSpawnPoint: {fileID: 257445177}
   _attackSpeed: 0.3
+--- !u!1 &1508449683
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1508449685}
+  - component: {fileID: 1508449684}
+  m_Layer: 0
+  m_Name: GameStateController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1508449684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1508449683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ebe95c649724a54d84118857fbd2e99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _waveSpawner: {fileID: 880243213}
+--- !u!4 &1508449685
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1508449683}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1692631067
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5945,7 +6031,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -2
+  m_SortingOrder: -1
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -6558,4 +6644,5 @@ SceneRoots:
   - {fileID: 1710432412}
   - {fileID: 1057130342}
   - {fileID: 880243212}
+  - {fileID: 1508449685}
   - {fileID: 245564807}

@@ -20,19 +20,22 @@ public class WaveSpawner : MonoBehaviour
     [SerializeField] private List<Wave> _waves;
     [SerializeField][Space] private float _delayBetweenWaves = 1f;
 
+    public event Action OnWaveComplete;
 
     private int _currentWaveIndex = 0;
     private List<GameObject> _aliveEnemies = new List<GameObject>();
 
     private void Start()
     {
-        if(_aliveEnemies.Count == 0 && _currentWaveIndex < _waves.Count)
-        {
-            StartNextWave();
-        }     
+        Debug.Log($"{_waves.Count} waves");
+
+        //if(_aliveEnemies.Count == 0 && _currentWaveIndex < _waves.Count)
+        //{
+        //    StartNextWave();
+        //}     
     }
 
-    private void StartNextWave()
+    public void StartNextWave()
     {
         if(_currentWaveIndex >= _waves.Count)
         {
@@ -42,14 +45,27 @@ public class WaveSpawner : MonoBehaviour
 
         var currentWave = _waves[_currentWaveIndex];
 
-        SpawnWave(currentWave);
+        StartCoroutine(SpawnWave(currentWave));
 
         _currentWaveIndex++;
     }
 
-    private void SpawnWave(Wave wave)
+    private IEnumerator SpawnWave(Wave wave)
     {
-        foreach(var enemySpawnData in wave.enemies)
+        Debug.Log($"{_currentWaveIndex + 1} wave");
+
+        SpawnEnemy(wave);
+
+        yield return new WaitUntil(() => _aliveEnemies.Count == 0);
+
+        OnWaveComplete?.Invoke();
+
+        //StartCoroutine(StartNextWaveWithDelay());
+    }
+
+    private void SpawnEnemy(Wave wave)
+    {
+        foreach (var enemySpawnData in wave.enemies)
         {
             var enemy = Instantiate(enemySpawnData.prefab, enemySpawnData.spawnPoint.position, enemySpawnData.spawnPoint.rotation);
 
@@ -63,7 +79,7 @@ public class WaveSpawner : MonoBehaviour
     {
         _aliveEnemies.Remove(enemy);
 
-        CheckWaveEnd();
+        //CheckWaveEnd();
     }
 
     private void CheckWaveEnd()

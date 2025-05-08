@@ -15,18 +15,33 @@ public class Projectile : MonoBehaviour
         transform.Translate(Vector3.right * Time.deltaTime * _projectileSpeed);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-          return;
+            return;
         }
 
-        if (collision.TryGetComponent<IDamageable>(out IDamageable damageable))
+        if (collision.gameObject.TryGetComponent<IDamageable>(out IDamageable damageable))
         {
             damageable.TakeDamage(1);
         }
 
         Destroy(gameObject);
     }
+
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.gameObject.CompareTag("Player"))
+    //    {
+    //      return;
+    //    }
+
+    //    if (collision.TryGetComponent<IDamageable>(out IDamageable damageable))
+    //    {
+    //        damageable.TakeDamage(1);
+    //    }
+
+    //    Destroy(gameObject);
+    //}
 }
