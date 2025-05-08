@@ -22,18 +22,19 @@ public class Character : MonoBehaviour, IDamageable, IControllable
     public Rigidbody2D Rigidbody { get ; set; }
     public bool IsFacingRight { get; set; }
 
+    private Animator _animator;
+
     private void Awake()
     {
-        _rb = GetComponent<Rigidbody2D>();
-
         Rigidbody = GetComponent<Rigidbody2D>();
+
+        _animator = GetComponentInChildren<Animator>();
     }
 
     private void Start()
     {
         CurrentHealth = MaxHealth;
     }
-
 
     private void FixedUpdate()
     {
@@ -50,7 +51,16 @@ public class Character : MonoBehaviour, IDamageable, IControllable
     {
         _velocity = _moveDirection * _characterSpeed;
 
-        _rb.linearVelocity = _velocity;
+        Rigidbody.linearVelocity = _velocity;
+
+        if (_velocity != Vector2.zero)
+        {
+            _animator.SetTrigger("Move");
+        }
+        else
+        {
+            _animator.SetTrigger("Idle");
+        }
     }
 
     private void AdjustPlayerFacingDirection()

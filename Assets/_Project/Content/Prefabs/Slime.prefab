@@ -97,7 +97,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5074039626189703547}
   - component: {fileID: 5250101615305010308}
-  - component: {fileID: 4930581421877307529}
   - component: {fileID: 2561390111663188933}
   - component: {fileID: 8873077486667597947}
   m_Layer: 0
@@ -136,24 +135,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f4fe5d66a6296c48a585b92dd4f0256, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <MaxHealth>k__BackingField: 3
-  _randomMovementRange: 3
-  _randomMovementSpeed: 1
---- !u!114 &4930581421877307529
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3246630035003271564}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60cb17680bd011649bc0f8e135ea7258, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _movespeed: 2
-  _roamingRadius: 2
-  _chaseRadius: 5
+  <MaxHealth>k__BackingField: 1
+  EnemyIdleBase: {fileID: 11400000, guid: 56dada0fd03014e4f9e248ff4fc334f8, type: 2}
+  EnemyChaseBase: {fileID: 11400000, guid: 1c9de19c17c48e346a83fe645bd3cc27, type: 2}
+  EnemyAttackBase: {fileID: 11400000, guid: 463ac7d9c25d1af4db9c1f2291da2bc0, type: 2}
 --- !u!50 &2561390111663188933
 Rigidbody2D:
   serializedVersion: 5
@@ -318,7 +303,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 3
+  m_Radius: 1
 --- !u!114 &4244395838427795306
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -399,7 +384,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 5
+  m_Radius: 6
 --- !u!114 &4590342708826151888
 MonoBehaviour:
   m_ObjectHideFlags: 0
