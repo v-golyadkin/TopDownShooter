@@ -19,7 +19,7 @@ public class EnemyChaseDirectToPlayer : EnemyChaseSOBase
     {
         base.DoEnterLogic();
 
-        Debug.Log("Chase State");
+        //Debug.Log("Chase State");
     }
 
     public override void DoExitLogic()
