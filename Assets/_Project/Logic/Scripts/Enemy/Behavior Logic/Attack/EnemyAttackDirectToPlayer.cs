@@ -19,7 +19,7 @@ public class EnemyAttackDirectToPlayer : EnemyAttackSOBase
     {
         base.DoEnterLogic();
 
-        Debug.Log("Attack State");
+        //Debug.Log("Attack State");
     }
 
     public override void DoExitLogic()
@@ -33,7 +33,7 @@ public class EnemyAttackDirectToPlayer : EnemyAttackSOBase
         
         var direction = (playerTransform.position - transform.position).normalized;
 
-        enemy.MoveTo(direction);
+        enemy.MoveTo(direction * _moveSpeed);
     }
 
     public override void DoUpdateLogic()

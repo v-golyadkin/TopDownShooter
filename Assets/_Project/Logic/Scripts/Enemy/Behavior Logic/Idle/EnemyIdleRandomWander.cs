@@ -20,7 +20,7 @@ public class EnemyIdleRandomWander : EnemyIdleSOBase
     {
         base.DoEnterLogic();
 
-        Debug.Log("Idle State");
+        //Debug.Log("Idle State");
 
         _targetPosition = GetRandomPointInCircle();
     }
